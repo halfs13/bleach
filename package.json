@@ -28,6 +28,7 @@
     "uuid": "2.0.1",
     "htmlparser2": "3.8.3",
     "superagent": "1.4.0",
+    "cheerio": "0.19.0",
 
     "elasticsearch": "8.2.0",
 
