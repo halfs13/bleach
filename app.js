@@ -5,4 +5,4 @@ var express = require('express');
 var app = express();
 config.express(app, config);
 
-require('./lib/loaders/routes.js')(app);
+require('./server/loaders/routes.js')(app);

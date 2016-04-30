@@ -2,7 +2,7 @@
 
 var config = require('config');
 var logger = config.logger.child({
-    module: 'ad.controller'
+    module: 'listing.controller'
 });
 var service = require('./service');
 

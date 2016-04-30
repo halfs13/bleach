@@ -5,6 +5,9 @@ var request = require('superagent-promise')(require('superagent'), Promise);
 var cheerio = require('cheerio');
 
 var config = require('config');
+var logger = config.logger.child({
+    module: 'listing.service'
+});
 
 var DB_TYPE = 'job-listing';
 
@@ -32,13 +35,13 @@ Service.index = function() {
     });
 };
 
-var fetchList = function() {
-    var url = "http://service.dice.com/api/rest/jobsearch/v1/simple.json?sort=1&pgcnt=5";
+function fetchList() {
+    var url = "http://service.dice.com/api/rest/jobsearch/v1/simple.json?sort=1&pgcnt=10";
     return fetchPage(url)
     .then(function(res) {
         return JSON.parse(res);
     });
-};
+}
 
 var processList = function(list) {
     var result = [];
@@ -47,10 +50,12 @@ var processList = function(list) {
     .each(function(listing) {
         return processPage(listing)
         .then(function(pageResult) {
+            console.log(result.length);
             result.push(pageResult);
         });
     })
     .then(function() {
+        console.log(result.length);
         return result;
     });
 };
@@ -58,7 +63,9 @@ var processList = function(list) {
 var processPage = function(page) {
     var pageResult = {
         lister: {
-            name: page.company
+            company: {
+                name: page.company
+            }
         },
         url: page.detailUrl,
         title: page.jobTitle,
@@ -67,7 +74,14 @@ var processPage = function(page) {
 
     return fetchPage(page.detailUrl)
     .then(function(response) {
-        console.log(response);
+        var $ = cheerio.load(response);
+
+        pageResult.lister.company.displayName = $('li.employer').find('a').text();
+        pageResult.description = $('#jobdescSec').text();
+        var payIcon = $('span.icon-bank-note')[0];
+        if(payIcon) {
+            pageResult.pay = $(payIcon.parent.parent).find('.iconsiblings').find('span').html();
+        }
 
         return pageResult;
     });

@@ -11,7 +11,7 @@ var appPath = configPathArray.join(path.sep);
 
 var config = {
     log_config: {
-        name: "api.lithium" + uuid(),
+        name: "api.bleach" + uuid(),
         level: process.env.log_level || 'debug'
     },
 

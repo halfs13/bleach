@@ -4,37 +4,31 @@
   "author": "halfs13",
   "license": "MIT",
   "description": "Dice api ingest server",
-
   "dependencies": {
+    "bcrypt": "0.8.5",
+    "bluebird": "3.1.1",
+    "body-parser": "1.14.2",
+    "bunyan": "1.5.1",
+    "cheerio": "0.19.0",
+    "config": "file:./server/config",
+    "cors": "2.7.1",
+    "del": "2.2.0",
+    "elasticsearch": "10.0.1",
+    "express": "4.13.3",
+    "express-jwt": "3.3.0",
     "gulp": "3.9.0",
-    "gulp-jshint": "2.0.0",
-    "jshint-stylish": "2.1.0",
+    "gulp-install": "0.6.0",
     "gulp-jscs": "3.0.2",
     "gulp-jscs-stylish": "1.3.0",
+    "gulp-jshint": "2.0.0",
     "gulp-nodemon": "2.0.6",
-    "gulp-install": "0.6.0",
-
-    "del": "2.2.0",
-    "bluebird": "3.1.1",
-    "bunyan": "1.5.1",
-
-    "express": "4.13.3",
-    "method-override": "2.3.5",
-    "body-parser": "1.14.2",
-    "cors": "2.7.1",
-    "express-jwt": "3.3.0",
-
-    "bcrypt": "0.8.5",
-    "uuid": "2.0.1",
     "htmlparser2": "3.9.0",
+    "jshint-stylish": "2.1.0",
+    "method-override": "2.3.5",
+    "superagent": "1.8.3",
     "superagent-promise": "1.1.0",
-    "cheerio": "0.19.0",
-
-    "elasticsearch": "10.0.1",
-
-    "config": "file:./lib/config"
+    "uuid": "2.0.1"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/halfs13/bleach.git"

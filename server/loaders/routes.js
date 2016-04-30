@@ -11,7 +11,7 @@ var logger = config.logger.child({
 
 var routeLoader = function(app) {
     return new Promise(function(resolve) {
-        var apiPath = path.sep + 'lib' + path.sep + 'api' + path.sep;
+        var apiPath = path.sep + 'server' + path.sep + 'api' + path.sep;
         var basePath = config.app_path + apiPath;
 
         logger.debug('To read component routes from ' + basePath);
